@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Card
+  - SunFlowerCard
+  - PeaShooterCard
+  - Plant
+  - Zombie
+  - House
+  - LawnMover
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Zombie
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 1855987705
+    locked: 0
+  - name: Cell
+    uniqueID: 355724171
+    locked: 0
+  - name: Others
+    uniqueID: 2674256231
+    locked: 0
+  - name: Characters
+    uniqueID: 3938872529
+    locked: 0
+  - name: Effect
+    uniqueID: 235787161
+    locked: 0
