@@ -34,6 +34,7 @@ public class Pool<T> : SingleTon<Pool<T>> where T:Pool<T>
         Destroy(obj);
     }
 
+    //自定义的利用和回收的方法
     public virtual GameObject GetPrefab(Vector3 pos)
     {
         GameObject go=pool.Get();
