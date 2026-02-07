@@ -7,8 +7,8 @@ public class PeaBullet : MonoBehaviour
 {
     private float speed = 2;
     private int atkValue;
-    private float DestroyTimer=0;
-    private float DestroyTime=5f;
+    private float bulletDestroyTimer=0;
+    private float bulletDestroyTime=5f;
     
     public GameObject peaBulletHitEffect;
 
@@ -32,11 +32,12 @@ public class PeaBullet : MonoBehaviour
     {
         transform.Translate(Vector3.right * (speed * Time.deltaTime));
         
+        
         //对象池代替没碰到敌人的子弹的回收
-        DestroyTimer += Time.deltaTime;
-        if (DestroyTimer > DestroyTime)
+        bulletDestroyTimer += Time.deltaTime;
+        if (bulletDestroyTimer > bulletDestroyTime)
         {
-            DestroyTimer=0;
+            bulletDestroyTimer=0;
             PeaBulletPool.Instance.ReleasePrefab(gameObject);
         }
     }
@@ -50,9 +51,14 @@ public class PeaBullet : MonoBehaviour
             
             //对象池代替碰到敌人的子弹的回收
             PeaBulletPool.Instance.ReleasePrefab(gameObject);
-            DestroyTimer=0;
-            GameObject go=Instantiate(peaBulletHitEffect, transform.position, Quaternion.identity);
-            Destroy(go, .15f);
+            bulletDestroyTimer=0;
+            
+            //GameObject go=Instantiate(peaBulletHitEffect, transform.position, Quaternion.identity);
+            //Destroy(go, .15f);
+            
+            //对象池代替子弹打中特效的生成
+            PeaBulletHitPool.Instance.GetPrefab(transform.position);
+            
         }
     }
 }
