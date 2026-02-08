@@ -6,8 +6,8 @@ using UnityEngine;
 public class PeaShooter : Plant
 {
     public float shootDuration = 2;
-    private float shootTimer;
-    private Transform shootPos;
+    protected float shootTimer;
+    protected Transform shootPos;
     public LayerMask targetLayer;
     public float watchDistance;
     public PeaBullet peaBullet;
@@ -37,7 +37,7 @@ public class PeaShooter : Plant
         }
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
         AudioManager.Instance.PlayClip(Config.shoot,1);
         //PeaBullet go=Instantiate(peaBullet,shootPos.position,Quaternion.identity);

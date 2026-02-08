@@ -12,7 +12,8 @@ using UnityEngine;
     public enum PlantType
     {
         Sunflower,
-        PeaShooter
+        PeaShooter,
+        DoublePeaShooter
     }
 public class Plant : MonoBehaviour
 {
