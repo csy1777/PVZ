@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FlagZombie_Controller
+  m_Controller: {fileID: 9100000, guid: c908e8b7c5cc9aa44b41b92906987dc6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8a1a5e19ecc56c742a87f18fb360210f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 081a6bc0eef02114c9bbe83586c624a6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd4d1c160923fc940b017bcec75f8779, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 437dc9347e59a7742a593346d01fd565, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6da6d4b61ce07b247a348d4132b7db7d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 05bc5e526e177a04b9dc1ddc9f113d34, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 91051d5f71585734eaf08dd5bbdec891, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c36c9ef9979f3a046bfcd708dad309ca, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9143da359a33b4b4a8361e8980c38c96, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 315d3f8b5328c184686d5d89012cff4e, type: 2}
