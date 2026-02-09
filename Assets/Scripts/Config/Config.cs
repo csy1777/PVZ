@@ -13,4 +13,6 @@ public class Config
     public const string plant = "Audio/Sound/plant";
     public const string shoot = "Audio/Sound/shoot";
     public const string lawnmover = "Audio/Sound/lawnmower";
+    public const string potatoMine = "Audio/Sound/potato_mine";
+    public const string readySetPlant = "Audio/Sound/readysetplant";
 }

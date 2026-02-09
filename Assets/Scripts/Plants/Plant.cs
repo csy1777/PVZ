@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    enum PlantState
+    public enum PlantState
     {
         Disabled,
         Enabled,
@@ -13,11 +13,12 @@ using UnityEngine;
     {
         Sunflower,
         PeaShooter,
-        DoublePeaShooter
+        DoublePeaShooter,
+        PotatoMine
     }
 public class Plant : MonoBehaviour
 {
-    PlantState plantState = PlantState.Disabled;
+    protected PlantState plantState = PlantState.Disabled;
     public PlantType plantType=PlantType.Sunflower;
     protected Animator anim;
     protected BoxCollider2D collider;
@@ -56,7 +57,7 @@ public class Plant : MonoBehaviour
         
     }
 
-    public void TransitionToDisable()
+    public virtual void TransitionToDisable()
     {
         plantState = PlantState.Disabled;
         anim.enabled = false;
