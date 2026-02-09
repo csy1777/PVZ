@@ -17,6 +17,7 @@ public class PrepareUI : MonoBehaviour
     {
         this.onComplete=OnComplete;
         anim.enabled = true;
+        AudioManager.Instance.PlayClip(Config.readySetPlant,1);
     }
 
     public void OnShowComplete()
