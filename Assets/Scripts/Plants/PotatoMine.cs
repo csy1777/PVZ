@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class PotatoMine : Plant
 {
     public float watchDistance;
     public LayerMask targetLayer;
     public float attackRidus;
+    public List<Collider2D> allZombiesCollider;
 
     protected override void UpdateEnabled()
     {
@@ -23,12 +25,12 @@ public class PotatoMine : Plant
 
     }
 
-    public override void TransitionToDisable()
+    /*public override void TransitionToDisable()
     {
         //重写TransitionToDisable,让土豆地雷的Boom动画播放完整
         plantState = PlantState.Disabled;
         collider.enabled = false;
-    }
+    }*/
 
     private bool FindEnemy()
     {
@@ -54,20 +56,19 @@ public class PotatoMine : Plant
         {
             anim.SetTrigger("Boom");
             AudioManager.Instance.PlayClip(Config.potatoMine,1);
-            DestroyZombies();
+            //DestroyZombies();
         }
     }
 
-    private void DestroyZombies()
+    private void HideZombies()
     {
-        Collider2D[] allZombies = Physics2D.OverlapCircleAll(transform.position, attackRidus, targetLayer);
-        foreach (Collider2D zombieCollider in allZombies)
+        Collider2D[] allColliders = Physics2D.OverlapCircleAll(transform.position, attackRidus, targetLayer);
+        foreach (Collider2D collider in allColliders)
         {
-            if (zombieCollider != null && zombieCollider.tag == "Zombie")
+            if (collider != null && collider.tag == "Zombie")
             {
-                Zombie zombie = zombieCollider.gameObject.GetComponent<Zombie>();
-                ZombieManager.Instance.RemoveZombie(zombie);
-                Destroy(zombie.gameObject);
+                allZombiesCollider.Add(collider);
+                collider.gameObject.SetActive(false);
             }
         }
     }
@@ -75,6 +76,17 @@ public class PotatoMine : Plant
     //帧事件
     public void SelfBoom()
     {
-        Destroy(gameObject);
+        foreach (Collider2D zombieCollider in allZombiesCollider)
+        {
+            Zombie zombie = zombieCollider.gameObject.GetComponent<Zombie>();
+            ZombieManager.Instance.RemoveZombie(zombie);
+            Destroy(zombieCollider.gameObject);
+        }
+        TakeDamage(this.Hp);
+    }
+
+    public void Boom()
+    {
+        HideZombies();
     }
 }
