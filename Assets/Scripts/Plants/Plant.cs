@@ -14,20 +14,21 @@ using UnityEngine;
         Sunflower,
         PeaShooter,
         DoublePeaShooter,
-        PotatoMine
+        PotatoMine,
+        WallNut
     }
 public class Plant : MonoBehaviour
 {
     protected PlantState plantState = PlantState.Disabled;
     public PlantType plantType=PlantType.Sunflower;
     protected Animator anim;
-    protected BoxCollider2D collider;
+    protected Collider2D collider;
     public int Hp = 100;
 
     protected virtual void Awake()
     {
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     protected virtual void Start()
