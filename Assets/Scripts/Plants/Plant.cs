@@ -15,7 +15,8 @@ using UnityEngine;
         PeaShooter,
         DoublePeaShooter,
         PotatoMine,
-        WallNut
+        WallNut,
+        Jalapeno
     }
 public class Plant : MonoBehaviour
 {

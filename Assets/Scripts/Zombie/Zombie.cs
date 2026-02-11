@@ -146,4 +146,11 @@ public class Zombie : MonoBehaviour
       ZombieManager.Instance.RemoveZombie(this);
       Destroy(gameObject, 2f);
    }
+   
+   //帧事件
+   public void BurnAnimation()
+   {
+      ZombieManager.Instance.RemoveZombie(this);
+      Destroy(gameObject);
+   }
 }
