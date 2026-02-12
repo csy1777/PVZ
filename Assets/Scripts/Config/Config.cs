@@ -16,4 +16,5 @@ public class Config
     public const string potatoMine = "Audio/Sound/potato_mine";
     public const string readySetPlant = "Audio/Sound/readysetplant";
     public const string jalapeno = "Audio/Sound/jalapeno";
+    public const string hmm = "Audio/Sound/squash_hmm";
 }
