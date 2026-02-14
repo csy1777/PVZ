@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 397430914247438186}
   - component: {fileID: 2617116569475481785}
   - component: {fileID: 8742516119368227112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SquashSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4435000006599690980}
   - component: {fileID: 1792012081106234759}
   - component: {fileID: 1733947626397613089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Squash
   m_TagString: Plant
   m_Icon: {fileID: 0}

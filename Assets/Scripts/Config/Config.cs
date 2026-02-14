@@ -17,4 +17,5 @@ public class Config
     public const string readySetPlant = "Audio/Sound/readysetplant";
     public const string jalapeno = "Audio/Sound/jalapeno";
     public const string hmm = "Audio/Sound/squash_hmm";
+    public const string shovel = "Audio/Sound/shovel";
 }

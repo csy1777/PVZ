@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6796190814865908082}
   - component: {fileID: 6325634814460244068}
   - component: {fileID: 534402892824388727}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jalapeno
   m_TagString: Plant
   m_Icon: {fileID: 0}
