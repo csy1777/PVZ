@@ -38,7 +38,7 @@ public class Plant : MonoBehaviour
         TransitionToDisable();
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         switch (plantState)
         {

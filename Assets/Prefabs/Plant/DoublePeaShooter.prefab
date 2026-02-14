@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7283017196983928589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5901013107954699947}
   - component: {fileID: 7949059016081065838}
   - component: {fileID: 6723904613329003401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoublePeaShooter
   m_TagString: Plant
   m_Icon: {fileID: 0}

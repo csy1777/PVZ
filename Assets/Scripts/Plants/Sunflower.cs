@@ -20,7 +20,7 @@ public class Sunflower : Plant
         base.Start();
     }
 
-    protected  void Update()
+    protected  override void Update()
     {
         base.Update();
     }
