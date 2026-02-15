@@ -18,4 +18,5 @@ public class Config
     public const string jalapeno = "Audio/Sound/jalapeno";
     public const string hmm = "Audio/Sound/squash_hmm";
     public const string shovel = "Audio/Sound/shovel";
+    public const string groan = "Audio/Sound/groan";
 }

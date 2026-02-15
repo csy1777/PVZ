@@ -3584,18 +3584,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddd3e8290739d2489939131d7a84257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ZombiePrefab: {fileID: 4134293864445392552, guid: 71b15f55a3545ab4288687f3d61de312, type: 3}
+  ZombiePrefab:
+  - {fileID: 2669519952119701846, guid: 27bcfc3b5f587ff429319b1175c57fe5, type: 3}
+  - {fileID: 4134293864445392552, guid: 71b15f55a3545ab4288687f3d61de312, type: 3}
   SpawnPoints:
   - {fileID: 9125638178490772561}
   - {fileID: 3930884570335853268}
   - {fileID: 3930884570218941541}
   - {fileID: 3930884570281801350}
   - {fileID: 3930884571197410933}
-  EachSpawnCount: 010000000000000000000000
+  EachSpawnCount: 050000000a0000000f000000
   BetweenEachRoundSpawnTime:
-  - 0
-  - 0
-  EachSpawnTime: 3
+  - 10
+  - 15
+  EachSpawnTime: 8
 --- !u!4 &1013330072
 Transform:
   m_ObjectHideFlags: 0
@@ -5312,9 +5314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunPointPos: {x: 0, y: 0, z: 0}
-  produceTime: 3
+  produceTime: 5
   sunPrefab: {fileID: 6917596191505446487, guid: 322ecdaa7f87a0e4fb319db2eb911eca, type: 3}
-  SunPoint: 200
+  SunPoint: 0
 --- !u!4 &1575904903
 Transform:
   m_ObjectHideFlags: 0
@@ -6501,7 +6503,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
