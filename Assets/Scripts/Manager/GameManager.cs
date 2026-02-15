@@ -37,6 +37,8 @@ public class GameManager : SingleTon<GameManager>
         isGameOver = true;
         failUI.Show();
         AudioManager.Instance.PlayClip(Config.lose_Music,1);
+        AudioManager.Instance.PlayBGM(null);
+        StartCoroutine(FailMenuUIShow());
         SetGameOver();
     }
 
@@ -56,6 +58,12 @@ public class GameManager : SingleTon<GameManager>
         SunManager.Instance.StopProduceSun();
         PlantManager.Instance.DisablePlants();
         cardListUI.DisableCardList();
+    }
+
+    IEnumerator FailMenuUIShow()
+    {
+        yield return new WaitForSeconds(3f);
+        failUI.ShowFailMenuUI();
     }
     private void ShowStartUI()
     {
