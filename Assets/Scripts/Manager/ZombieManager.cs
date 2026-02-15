@@ -15,7 +15,8 @@ enum SpawnState
 public class ZombieManager : SingleTon<ZombieManager>
 {
    SpawnState state = SpawnState.NotStart;
-   public GameObject ZombiePrefab;
+      //public GameObject ZombiePrefab;
+   public GameObject[] ZombiePrefab;
    public Transform[] SpawnPoints;
    [Header("ZombieCount in everyRound")]
    public int[] EachSpawnCount;
@@ -40,31 +41,34 @@ public class ZombieManager : SingleTon<ZombieManager>
       state = SpawnState.Spawning;
       StartCoroutine(SpawnZombie());
    }
+
    IEnumerator SpawnZombie()
    {
-       yield return new WaitForSeconds(5f);
+      yield return new WaitForSeconds(5f);
+      AudioManager.Instance.PlayClip(Config.groan, 1);
+      for (int i = 0; i < EachSpawnCount[0]; i++)
+      {
+         SpawnRandomZombie();
+         yield return new WaitForSeconds(EachSpawnTime);
+      }
+
+      yield return new WaitForSeconds(BetweenEachRoundSpawnTime[0]);
+      for (int i = 0; i < EachSpawnCount[1]; i++)
+      {
+         SpawnRandomZombie();
+         yield return new WaitForSeconds(EachSpawnTime);
+      }
+
+      yield return new WaitForSeconds(BetweenEachRoundSpawnTime[1]);
+      AudioManager.Instance.PlayClip(Config.finalwave, 1);
+      for (int i = 0; i < EachSpawnCount[2]; i++)
+      {
+         SpawnRandomZombie();
+         yield return new WaitForSeconds(EachSpawnTime);
+      }
       //僵尸生成完成后状态转换为End
-         for (int i = 0; i < EachSpawnCount[0]; i++)
-         {
-            SpawnRandomZombie();
-            yield return new WaitForSeconds(EachSpawnTime);
-         }
 
-         yield return new WaitForSeconds(BetweenEachRoundSpawnTime[0]);
-         for (int i = 0; i < EachSpawnCount[1]; i++)
-         {
-            SpawnRandomZombie();
-            yield return new WaitForSeconds(EachSpawnTime);
-         }
-
-         yield return new WaitForSeconds(BetweenEachRoundSpawnTime[1]);
-         AudioManager.Instance.PlayClip(Config.finalwave,1);
-         for (int i = 0; i < EachSpawnCount[2]; i++)
-         {
-            SpawnRandomZombie();
-            yield return new WaitForSeconds(EachSpawnTime);
-         }
-         state = SpawnState.End;
+      state = SpawnState.End;
    }
 
    //在每一行随机生成僵尸,如果游戏结束暂停生成僵尸
@@ -79,12 +83,17 @@ public class ZombieManager : SingleTon<ZombieManager>
       if (state == SpawnState.Spawning)
       {
          int index = Random.Range(0, SpawnPoints.Length);
-         GameObject go = Instantiate(ZombiePrefab, SpawnPoints[index].position, Quaternion.identity);
+         GameObject go = Instantiate(GetRandomZombie(), SpawnPoints[index].position, Quaternion.identity);
          go.GetComponent<SpriteRenderer>().sortingOrder = 10 * (index+1);
          ZombieList.Add(go.GetComponent<Zombie>());
       }
    }
 
+   private GameObject GetRandomZombie()
+   {
+      int index=Random.Range(0,ZombiePrefab.Length);
+      return ZombiePrefab[index];
+   }
    public void Pause()
    {
       state = SpawnState.End;
