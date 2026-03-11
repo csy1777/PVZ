@@ -12,7 +12,9 @@ public class DoublePeaShooter :PeaShooter
     IEnumerator  DoubleShoot()
     {
         yield return new WaitForSeconds(.15f);
-        GameObject go=PeaBulletPool.Instance.GetPrefab(shootPos.position);
+        //GameObject go=PeaBulletPool.Instance.GetPrefab(shootPos.position);
+        
+        GameObject go=PoolManager.pools["PeaBullet"].GetPrefab(shootPos.position);
         PeaBullet peaBullet=go.GetComponent<PeaBullet>();
         peaBullet.SetBulletSpeed(bulletSpeed);
         peaBullet.SetAtkValue(bulletAtkValue);

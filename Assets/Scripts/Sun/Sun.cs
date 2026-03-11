@@ -32,7 +32,8 @@ public class Sun : MonoBehaviour
                 //Destroy(this.gameObject);
                 
                 //对象池代替阳光的回收
-                SunPool.Instance.ReleasePrefab(gameObject);
+                //SunPool.Instance.ReleasePrefab(gameObject);
+                PoolManager.pools["Sun"].ReleasePrefab(gameObject);
             }
         );
     }

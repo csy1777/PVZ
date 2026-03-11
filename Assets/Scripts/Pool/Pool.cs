@@ -1,55 +1,64 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Pool<T> : SingleTon<Pool<T>> where T:Pool<T> 
+public class Pool 
 {
     public GameObject prefab;
     public ObjectPool<GameObject> pool;
 
-    protected virtual void Awake()
+    public Pool(GameObject prefab)
     {
-        base.Awake();
-        pool=new ObjectPool<GameObject>(CreateFunc,ActionOnGet,ActionOnRelease,ActionOnDestroy,true,10,1000);
+        this.prefab = prefab;
+
+        // 初始化官方对象池
+        pool = new ObjectPool<GameObject>(
+            CreateFunc,
+            ActionOnGet,
+            ActionOnRelease,
+            ActionOnDestroy,
+            true, 10, 1000
+        );
     }
 
-    protected GameObject CreateFunc()
+    private GameObject CreateFunc()
     {
-        var obj=Instantiate(prefab);
+        var obj=GameObject.Instantiate(prefab);
         return obj;
     }
-    protected void ActionOnGet(GameObject obj)
+    private void ActionOnGet(GameObject obj)
     {
         obj.SetActive(true);
     }
-    protected void  ActionOnRelease(GameObject obj)
+    private void  ActionOnRelease(GameObject obj)
     {
         obj.SetActive(false);
     }
 
-    protected void ActionOnDestroy(GameObject obj)
+    private void ActionOnDestroy(GameObject obj)
     {
-        Destroy(obj);
+        GameObject.Destroy(obj);
     }
 
     //自定义的利用和回收的方法
-    public virtual GameObject GetPrefab(Vector3 pos)
+    public  GameObject GetPrefab(Vector3 pos)
     {
         GameObject go=pool.Get();
         go.transform.position=pos;
         return go;
     }
 
-    public virtual void ReleasePrefab(GameObject obj)
+    public  void ReleasePrefab(GameObject obj)
     {
         pool.Release(obj);
         InitPrefab(obj);
     }
 
-    public virtual void InitPrefab(GameObject obj)
+    public  void InitPrefab(GameObject obj)
     {
-        
+        obj.transform.DOKill();
     }
 }
