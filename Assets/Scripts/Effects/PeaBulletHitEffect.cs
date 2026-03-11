@@ -12,7 +12,10 @@ public class PeaBulletHitEffect : MonoBehaviour
         if (hitEffectDestroyTimer > hitEffectDestroyTime)
         {
             hitEffectDestroyTimer=0;
-            PeaBulletHitPool.Instance.ReleasePrefab(gameObject);
+            
+            //PeaBulletHitPool.Instance.ReleasePrefab(gameObject);
+            
+            PoolManager.pools["PeaBulletHit"].ReleasePrefab(gameObject);
         }
     }
 }
