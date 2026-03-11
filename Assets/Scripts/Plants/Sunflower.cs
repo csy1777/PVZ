@@ -38,7 +38,9 @@ public class Sunflower : Plant
         //GameObject go=Instantiate(sunPrefab, transform.position, Quaternion.identity);
         
         //对象池代替Sunflower的阳光的复用
-        GameObject go = SunPool.Instance.GetPrefab(transform.position); 
+        //GameObject go = SunPool.Instance.GetPrefab(transform.position); 
+        
+        GameObject go=PoolManager.pools["Sun"].GetPrefab(transform.position);
         if (go != null)
         {
             /*float distance = Random.Range(JumpMinDistance, JumpMaxDistance);

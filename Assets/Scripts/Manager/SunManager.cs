@@ -80,7 +80,9 @@ public class SunManager : SingleTon<SunManager>
            //GameObject go=Instantiate(sunPrefab,position,Quaternion.identity);
            
            //对象池代替SunManager的阳光的复用
-           GameObject go = SunPool.Instance.GetPrefab(position);
+           //GameObject go = SunPool.Instance.GetPrefab(position);
+           
+           GameObject go=PoolManager.pools["Sun"].GetPrefab(position);
            position.y=Random.Range(-4,3);
            go.GetComponent<Sun>().LinearTo(position);
        }

@@ -45,7 +45,9 @@ public class PeaShooter : Plant
         //go.SetAtkValue(bulletAtkValue);
         
         //对象池代替PeaBullet的生成
-        GameObject go=PeaBulletPool.Instance.GetPrefab(shootPos.position);
+        //GameObject go=PeaBulletPool.Instance.GetPrefab(shootPos.position);
+        
+        GameObject go=PoolManager.pools["PeaBullet"].GetPrefab(shootPos.position);
         PeaBullet peaBullet=go.GetComponent<PeaBullet>();
         peaBullet.SetBulletSpeed(bulletSpeed);
         peaBullet.SetAtkValue(bulletAtkValue);
