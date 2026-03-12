@@ -12,7 +12,7 @@ public class MainMenuController : SingleTon<MainMenuController>
     private Text NameInputText;
     private Button submitButton;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         base.Awake();
         submitButton = setNameUI.transform.GetChild(1).GetComponent<Button>();
