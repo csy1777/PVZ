@@ -16,7 +16,7 @@ public class SunManager : SingleTon<SunManager>
     private float produceTimer;
     private bool isStartProduce=false;
     public int SunPoint;
-  protected void Awake()
+  protected override void Awake()
   {
       base.Awake();
       sunPointText= GameObject.Find("SunPointText").GetComponent<TextMeshProUGUI>();

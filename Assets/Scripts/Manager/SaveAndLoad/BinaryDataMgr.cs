@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
+
+public class BinaryDataMgr 
+{
+    private static BinaryDataMgr instance ;
+    public static BinaryDataMgr Instance => instance;
+    
+    private static string SAVE_PATH = Application.persistentDataPath + "/Data/";
+
+    public void SaveData(object obj, string fileName)
+    {
+        if(!Directory.Exists(SAVE_PATH))
+            Directory.CreateDirectory(SAVE_PATH);
+        using (FileStream fs = new FileStream(SAVE_PATH + fileName, FileMode.OpenOrCreate, FileAccess.Write))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(fs, obj);
+            fs.Close();
+        }
+    }
+
+    public T LoadData<T>(string fileName) where T : class
+    {
+        if(!File.Exists(SAVE_PATH + fileName)){return default(T);}
+
+        T obj;
+        using (FileStream fs = File.Open(SAVE_PATH + fileName, FileMode.Open, FileAccess.Read))
+        {
+            BinaryFormatter bf=new BinaryFormatter();
+            obj =bf.Deserialize(fs) as T ;
+            fs.Close();
+        }
+        return obj;
+    }
+}
