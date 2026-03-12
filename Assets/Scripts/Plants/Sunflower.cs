@@ -10,12 +10,12 @@ public class Sunflower : Plant
     private float produceTimer;
     public float JumpMinDistance = 1;
     public float JumpMaxDistance = 2;
-    protected void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }
 
-    protected  void Start()
+    protected override void Start()
     {
         base.Start();
     }
