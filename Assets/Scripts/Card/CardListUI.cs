@@ -11,7 +11,6 @@ public class CardListUI : MonoBehaviour
     private void Start()
     {
         DisableCardList();
-        //ShowCardList();
     }
 
     public void ShowCardList()
@@ -33,5 +32,50 @@ public class CardListUI : MonoBehaviour
         {
             card.EnableCard();
         }
+    }
+
+    public void SaveCards()
+    {
+        
+        if (cards == null || cards.Count <= 0)
+        {
+            Debug.LogWarning("卡片列表为空！");
+            return;
+        }
+
+        // 添加卡片
+        foreach (Card card in cards)
+        {
+            if (!GameDataHub.playerData.unlockedPlant.Contains(card.plantType))
+            {
+                GameDataHub.playerData.unlockedPlant.Add(card.plantType);
+            }
+        }
+
+       
+        if (BinaryDataMgr.Instance != null)
+        {
+            BinaryDataMgr.Instance.SaveData(GameDataHub.playerData, "Save.dat");
+            Debug.Log("✅ 卡片保存成功！");
+        }
+        else
+        {
+            Debug.LogError("❌ BinaryDataMgr 不在场景里！");
+        }
+    }
+    public void LoadCards()
+    {
+        // 1. 安全读取存档（没有就返回）
+        PlayerData loadData = BinaryDataMgr.Instance.LoadData<PlayerData>("Save.dat");
+        if (loadData == null)
+        {
+            Debug.Log("无存档，使用默认卡片");
+            return;
+        }
+
+        // 2. 把读取到的数据赋值给全局数据
+        GameDataHub.playerData = loadData;
+        
+        Debug.Log("✅ 卡片读取成功！");
     }
 }

@@ -4,13 +4,19 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class BinaryDataMgr 
+public class BinaryDataMgr : MonoBehaviour
 {
     private static BinaryDataMgr instance ;
     public static BinaryDataMgr Instance => instance;
     
-    private static string SAVE_PATH = Application.persistentDataPath + "/Data/";
-
+    private static string SAVE_PATH;
+    private void Awake()
+    {
+        SAVE_PATH = Application.persistentDataPath + "/Data/";
+        
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
     public void SaveData(object obj, string fileName)
     {
         if(!Directory.Exists(SAVE_PATH))
@@ -21,6 +27,8 @@ public class BinaryDataMgr
             bf.Serialize(fs, obj);
             fs.Close();
         }
+        Debug.Log("已存储");
+        Debug.Log(Application.persistentDataPath);
     }
 
     public T LoadData<T>(string fileName) where T : class

@@ -11,7 +11,6 @@ public class AudioManager :SingleTon<AudioManager>
         base.Awake();
         audioSource = GetComponent<AudioSource>();
     }
-
     public void PlayBGM(string path)
     {
         audioSource.clip = Resources.Load<AudioClip>(path);
