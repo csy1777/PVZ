@@ -44,4 +44,18 @@ public class BinaryDataMgr : MonoBehaviour
         }
         return obj;
     }
+    // 清空所有存档
+    public void ClearAllSaveData(string fileName)
+    {
+        string path = SAVE_PATH + fileName;
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("存档已清空！");
+        }
+        else
+        {
+            Debug.Log("暂无存档可删");
+        }
+    }
 }
