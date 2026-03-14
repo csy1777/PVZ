@@ -15,7 +15,7 @@ public class CardListUI : MonoBehaviour
         DisableCardList();
         
         //游戏开始使用默认植物,没有保存的数据
-        ClearCards();
+        //ClearCards();
         LoadCards();
     }
 
