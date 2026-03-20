@@ -118,7 +118,8 @@ public class CardListUI : MonoBehaviour
             //TODO 玩家自己选择要使用的卡片,卡片槽不够用
             card.transform.position=cardCells[index].position;
             index++;
-            //cards.Add(card.GetComponent<Card>());
+            
+            cards.Add(card.GetComponent<Card>());
         }
     }
 }
