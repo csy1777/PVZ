@@ -2506,7 +2506,7 @@ MonoBehaviour:
   CharacterImage: {fileID: 1084554054}
   GameStartDialogues:
   - name: "\u6234\u592B"
-    character: {fileID: 1084554054}
+    characterSprite: {fileID: 21300000, guid: b95e62d8a5c3195439bd0930814fa930, type: 3}
     content: "\u4F60\u597D"
   showDialogues: []
   index: 0

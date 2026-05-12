@@ -20,6 +20,15 @@ public class GameManager : SingleTon<GameManager>
         StartCoroutine(GameStart());
     }
 
+    //测试对话开启
+    private void Update()
+    {
+        if (!Input.GetKeyDown(KeyCode.Space))
+            return;
+
+        DialogueManager.Instance.StartDialogue("GameStart");
+    }
+
     IEnumerator GameStart()
     {
         //摄像机移动后显示游戏准备UI

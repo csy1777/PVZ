@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Dialogue
 {
     public string name;
-    public Image character;
+    public Sprite characterSprite;
     public string content;
 }
 
@@ -78,8 +78,8 @@ public class DialogueManager : MonoBehaviour
         }
         Dialogue dialogue = showDialogues[index++];
         NameText.text = dialogue.name;
+        CharacterImage.sprite = dialogue.characterSprite;
         ContentText.text = "";
-        CharacterImage.sprite = dialogue.character.sprite;
         
         float charSpeed = 0.1f; // 每个字符出现的时间间隔（秒）
         float totalTime = dialogue.content.Length * charSpeed;
