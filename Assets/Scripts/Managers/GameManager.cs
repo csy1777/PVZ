@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingleTon<GameManager>
 {
@@ -84,7 +85,16 @@ public class GameManager : SingleTon<GameManager>
         SunManager.Instance.StartProduceSun();
         ZombieManager.Instance.StartSpawning();
         cardListUI.ShowCardList();
-        AudioManager.Instance.PlayBGM(Config.bgm1);
+        //根据场景索引播放背景音乐
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 2:
+                AudioManager.Instance.PlayBGM(Config.bgm1);
+                break;
+            case 3:
+                AudioManager.Instance.PlayBGM(Config.bgm2);
+                break;
+        }
     }
    
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Config
 {
     public const string bgm1 = "Audio/Music/bgm1";
+    public const string bgm2 = "Audio/Music/bgm2";
     public const string btn_Click = "Audio/Sound/buttonclick";
     public const string eat = "Audio/Sound/chompsoft";
     public const string finalwave = "Audio/Sound/finalwave";
