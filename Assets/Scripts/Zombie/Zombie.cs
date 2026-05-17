@@ -78,7 +78,7 @@ public class Zombie : MonoBehaviour
       }
       else if (other.tag == "House")
       {
-         GameManager.Instance.EndGameFail();
+         EventCenter.Instance.EventTrigger("GameFail");
       }
       else if (other.tag == "LawnMover")
       {

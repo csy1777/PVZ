@@ -25,13 +25,13 @@ public class ZombieManager : SingleTon<ZombieManager>
    [Header("Time of EveryZombieSpawn")]
    public float EachSpawnTime=2f;
    private List<Zombie> ZombieList= new List<Zombie>();
-   
+
    private void Update()
    {
       if (state == SpawnState.End && ZombieList.Count == 0)
       {
          //游戏胜利
-         GameManager.Instance.EndGameSuccess();
+         EventCenter.Instance.EventTrigger("GameWin");
       }
    }
 

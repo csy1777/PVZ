@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : SingleTon<GameManager>
@@ -15,10 +16,21 @@ public class GameManager : SingleTon<GameManager>
     public FailUI failUI;
     private bool isGameOver = false;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        EventCenter.Instance.AddEvent("GameStart", (obj) => {StartCoroutine(GameStart()); });
+        EventCenter.Instance.AddEvent("GameWin",(obj) =>{EndGameSuccess();} );
+        EventCenter.Instance.AddEvent("GameFail",(obj) =>{EndGameFail();} );
+    }
+
     private void Start()
     {
         currentPosition = Camera.main.transform.position;
-        StartCoroutine(GameStart());
+        
+        EventCenter.Instance.EventTrigger("GameStart");
     }
 
     //测试对话开启
